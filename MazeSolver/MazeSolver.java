@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class MazeSolver
 {
-    private static Cell[][] readObject(String sketch1)
+    private static Cell[][] readObject(String s)
     {
         try
         {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(sketch1));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream(s));
             Cell[][] cell = (Cell[][]) is.readObject();
             return cell;
         }
