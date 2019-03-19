@@ -2,7 +2,7 @@ import java.io.*;
 
 public class LeerObjeto
 {
-    static int x=3,y=4;
+    static int x=1,y=3;
 
     public static void main(String[] args)
     {

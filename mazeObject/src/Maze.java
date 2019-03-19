@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+
 
 
 public class Maze
@@ -23,8 +23,11 @@ public class Maze
                 String.join("",sketch, "maze3.bin"),
                 String.join("",sketch, "maze4.bin"),
                 String.join("",sketch, "maze5.bin"),
-                String.join("",sketch, "maze6.bin"
-                )};
+                String.join("",sketch, "maze6.bin"),
+                String.join("",sketch, "maze7.bin"),
+                String.join("",sketch, "maze8.bin"),
+                String.join("",sketch, "maze9.bin"),
+                };
         System.out.println(mazes);
 
 
@@ -63,9 +66,59 @@ public class Maze
                 {{true,false,false,true}  ,{true,true,false,false} ,{true,false,true,true}  ,{true,false,true,false}   ,{true,false,true,false}  ,{true,true,false,false}},
                 {{false,true,false,true}  ,{false,true,false,true} ,{true,false,false,true} ,{true,false,true,false}   ,{true,false,true,false}  ,{false,true,false,false}},
                 {{false,true,false,true}  ,{false,false,true,true} ,{false,true,true,false} ,{true,false,false,true}   ,{true,true,true,false}   ,{false,true,false,true}},
-                {{false,true,false,true}  ,{true,false,true,false} ,{true,false,true,false} ,{false,false,true,false}  ,{true,false,true,false}  ,{false,true,false,false}},
+                {{false,true,false,true}  ,{true,false,true,true} ,{true,false,true,false} ,{false,false,true,false}  ,{true,false,true,false}  ,{false,true,false,false}},
                 {{false,false,false,true} ,{true,false,true,false} ,{true,false,true,false} ,{true,false,true,false}   ,{true,true,false,false}  ,{false,true,false,true}},
                 {{false,false,true,true}  ,{true,false,true,false} ,{true,true,true,false}  ,{true,false,true,true}    ,{false,true,true,false}  ,{false,true,true,true}}
+                };
+
+        boolean[][][] maze5 =
+                {
+                {{true,false,true,true}   ,{true,false,true,false} ,{true,false,true,false} ,{true,false,true,false}   ,{true,false,false,false} ,{true,true,false,false}},
+                {{true,false,false,true}  ,{true,false,true,false} ,{true,false,true,false} ,{true,false,false,false}  ,{false,true,true,false}  ,{false,false,true,true}},
+                {{false,false,false,true} ,{true,true,false,false} ,{true,false,true,true}  ,{false,true,true,false}   ,{true,false,false,true}  ,{true,false,false,false}},
+                {{false,true,false,true}  ,{false,false,true,true} ,{true,false,true,false} ,{true,true,false,false}   ,{false,true,true,true}   ,{false,true,false,true}},
+                {{false,true,false,true}  ,{true,false,false,true} ,{true,false,true,false} ,{false,false,true,false}  ,{true,true,true,false}   ,{false,true,false,true}},
+                {{false,true,true,true}   ,{false,false,true,true} ,{true,false,true,false} ,{true,false,true,false}   ,{true,false,true,false}  ,{false,true,true,false}}
+                };
+
+        boolean[][][] maze6 =
+                {
+                {{true,true,false,true}   ,{true,false,false,true} ,{true,true,false,false} ,{true,false,true,true}    ,{true,false,false,false} ,{true,true,false,false}},
+                {{false,true,false,true}  ,{false,true,false,true} ,{false,true,false,true} ,{true,false,false,true}   ,{false,true,true,false}  ,{false,true,false,true}},
+                {{false,false,false,true} ,{false,true,true,false} ,{false,true,true,true}  ,{false,true,false,true}   ,{true,false,false,true}  ,{false,true,true,false}},
+                {{false,false,true,true}  ,{true,true,false,false} ,{true,false,false,true} ,{false,true,false,false}  ,{false,true,false,true}  ,{true,true,false,true}},
+                {{true,false,false,true}  ,{false,true,true,false} ,{false,true,true,true}  ,{false,true,false,true}   ,{false,false,true,true}  ,{false,true,false,false}},
+                {{false,false,true,true}  ,{true,false,true,false} ,{true,false,true,false} ,{false,true,true,false}   ,{true,false,true,true}   ,{false,true,true,false}}
+                };
+
+        boolean[][][] maze7 =
+                {
+                {{true,false,false,true}  ,{true,false,true,false} ,{true,false,true,false} ,{true,true,false,false}   ,{true,false,false,true}  ,{true,true,false,false}},
+                {{false,true,false,true}  ,{true,false,false,true} ,{true,true,true,false}  ,{false,false,true,true}   ,{false,true,true,false}  ,{false,true,false,true}},
+                {{false,false,true,true}  ,{false,true,true,false} ,{true,false,false,true} ,{true,true,true,false}    ,{true,false,false,true}  ,{false,true,true,false}},
+                {{true,false,false,true}  ,{true,true,false,false} ,{false,false,false,true},{true,false,true,false}   ,{false,true,true,false}  ,{true,true,false,true}},
+                {{false,true,false,true}  ,{false,true,true,true}  ,{false,false,true,true} ,{true,false,true,false}   ,{true,true,false,false}  ,{false,true,false,true}},
+                {{false,false,true,true}  ,{true,false,true,false} ,{true,false,true,false} ,{true,false,true,false}   ,{false,false,true,false} ,{false,true,true,false}}
+                };
+
+        boolean[][][] maze8 =
+                {
+                {{true,true,false,true}   ,{true,false,false,true} ,{true,false,true,false} ,{true,true,false,false}   ,{true,false,false,true}  ,{true,true,false,false}},
+                {{false,false,false,true} ,{false,false,true,false},{true,true,true,false}  ,{false,false,true,true}   ,{false,true,true,false}  ,{false,true,false,true}},
+                {{false,true,false,true}  ,{true,false,false,true} ,{true,false,true,false} ,{true,false,true,false}   ,{true,true,false,false}  ,{false,true,false,true}},
+                {{false,true,false,true}  ,{false,false,true,true} ,{true,true,false,false} ,{true,false,true,true}    ,{false,false,true,false} ,{false,true,true,false}},
+                {{false,true,false,true}  ,{true,true,false,true}  ,{false,false,true,true} ,{true,false,true,false}   ,{true,false,true,false}  ,{true,true,true,false}},
+                {{false,false,true,true}  ,{false,false,true,false},{true,false,true,false} ,{true,false,true,false}   ,{true,false,true,false}  ,{true,true,true,false}}
+                };
+
+        boolean[][][] maze9 =
+                {
+                {{true,true,false,true}   ,{true,false,false,true} ,{true,false,true,false} ,{true,false,true,false}   ,{true,false,false,false} ,{true,true,false,false}},
+                {{false,true,false,true}  ,{false,true,false,true} ,{true,false,false,true} ,{true,true,true,false}    ,{false,true,false,true}  ,{false,true,false,true}},
+                {{false,false,false,true} ,{false,false,true,false},{false,true,true,false} ,{true,false,false,true}   ,{false,true,true,false}  ,{false,true,false,true}},
+                {{false,true,false,true}  ,{true,true,false,true}  ,{true,false,false,true} ,{false,true,true,false}   ,{true,false,true,true}   ,{false,true,false,false}},
+                {{false,true,false,true}  ,{false,true,false,true} ,{false,true,false,true} ,{true,false,false,true}   ,{true,true,false,false}  ,{false,true,true,true}},
+                {{false,false,true,true}  ,{false,true,true,false} ,{false,false,true,true} ,{false,true,true,false}   ,{false,false,true,true}  ,{true,true,true,false}}
                 };
 
         /*******************************************************
@@ -110,10 +163,35 @@ public class Maze
                             }
                             break;
                         case 4:
+                            for(int k = 0; k < cell[i][j].walls.length;k++)
+                            {
+                                cell[i][j].walls[k] = maze5[j][i][k];
+                            }
                             break;
                         case 5:
+                            for(int k = 0; k < cell[i][j].walls.length;k++)
+                            {
+                                cell[i][j].walls[k] = maze6[j][i][k];
+                            }
                             break;
-
+                        case 6:
+                            for(int k = 0; k < cell[i][j].walls.length;k++)
+                            {
+                                cell[i][j].walls[k] = maze7[j][i][k];
+                            }
+                            break;
+                        case 7:
+                            for(int k = 0; k < cell[i][j].walls.length;k++)
+                            {
+                                cell[i][j].walls[k] = maze8[j][i][k];
+                            }
+                            break;
+                        case 8:
+                            for(int k = 0; k < cell[i][j].walls.length;k++)
+                            {
+                                cell[i][j].walls[k] = maze9[j][i][k];
+                            }
+                            break;
                     }
                 }
             }

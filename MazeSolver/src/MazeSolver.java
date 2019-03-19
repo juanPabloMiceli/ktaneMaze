@@ -56,9 +56,9 @@ public class MazeSolver
     {
         if((neighbors[0] == false) && (y != 0) && (c[x][y-1].cost == 99))
             c[x][y-1].cost = cost+1;
-        if((neighbors[1] == false) && (x != cols) && (c[x+1][y].cost == 99))
+        if((neighbors[1] == false) && (x != (cols-1)) && (c[x+1][y].cost == 99))
             c[x+1][y].cost = cost+1;
-        if((neighbors[2] == false) && (y != rows) && (c[x][y+1].cost == 99))
+        if((neighbors[2] == false) && (y != (rows-1)) && (c[x][y+1].cost == 99))
             c[x][y+1].cost = cost+1;
         if((neighbors[3] == false) && (x != 0) && (c[x-1][y].cost == 99))
             c[x-1][y].cost = cost+1;
