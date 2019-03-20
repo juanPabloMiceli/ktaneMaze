@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MazeSolver
+public class gitMazeSolver
 {
     private static Cell[][] readObject(String s)
     {
@@ -248,19 +248,52 @@ public class MazeSolver
 
         int[] mazeData = {-1,-1,-1,-1,-1,-1};
         boolean[] neighbors = new boolean[4];
-        String path = ("D:\\codigos\\codigosJava\\mazeObject\\src\\");
+
+
+        /*********************************************************************
+         *  ASI CONSIGO EL PATH PARA EL ARCHIVO .JAR
+         ********************************************************************/
+
+        String path = gitMazeSolver.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        path = path.replace("gitMazeSolver.jar","");
+        path = path.replace("%20"," ");
+
         String[] mazes =
                 {
-                        String.join("",path,"maze1.bin"),
-                        String.join("",path,"maze2.bin"),
-                        String.join("",path,"maze3.bin"),
-                        String.join("",path,"maze4.bin"),
-                        String.join("",path,"maze5.bin"),
-                        String.join("",path,"maze6.bin"),
-                        String.join("",path,"maze7.bin"),
-                        String.join("",path,"maze8.bin"),
-                        String.join("",path,"maze9.bin"),
+                        String.join("",path,"\\maze1.bin"),
+                        String.join("",path,"\\maze2.bin"),
+                        String.join("",path,"\\maze3.bin"),
+                        String.join("",path,"\\maze4.bin"),
+                        String.join("",path,"\\maze5.bin"),
+                        String.join("",path,"\\maze6.bin"),
+                        String.join("",path,"\\maze7.bin"),
+                        String.join("",path,"\\maze8.bin"),
+                        String.join("",path,"\\maze9.bin"),
                 };
+
+
+        /*********************************************************************
+         *  ASI CONSIGO EL PATH PARA COMPILARLO LOCALMENTE
+         ********************************************************************/
+/*
+        String path = "D:\\codigos\\codigosJava\\mazeObject\\src";
+
+        String[] mazes =
+                {
+                        String.join("",path,"\\maze1.bin"),
+                        String.join("",path,"\\maze2.bin"),
+                        String.join("",path,"\\maze3.bin"),
+                        String.join("",path,"\\maze4.bin"),
+                        String.join("",path,"\\maze5.bin"),
+                        String.join("",path,"\\maze6.bin"),
+                        String.join("",path,"\\maze7.bin"),
+                        String.join("",path,"\\maze8.bin"),
+                        String.join("",path,"\\maze9.bin"),
+                };
+
+*/
+
+
         int mazeNumber = -1;
         boolean whileFlag = false;
 
@@ -275,6 +308,7 @@ public class MazeSolver
         /*************************************
          *ACA GUARDO EL LABERINTO EN "cell"
          ************************************/
+
         cell = readObject(mazes[mazeData[6]]);
 
 
@@ -307,6 +341,7 @@ public class MazeSolver
         }
 
 
+
         /*****************************************************************************************************************
          *  HAGO QUE "currentPosition" "SE PARE" EN EL PRINCIPIO DEL LABERINTO, PARA IR ACERCANDOSE AL FINAL
          *  SIEMPRE MOVIENDOSE A CASILLAS CUYA VARIABLE COST SEA MENOR A LA ACTUAL
@@ -322,9 +357,10 @@ public class MazeSolver
         }
 
 
-        /* *//********************
-     * IMPRIMO LABERINTO
-     *******************//*
+        /********************
+         * IMPRIMO LABERINTO
+         *******************/
+        /*
         for(int x = 0; x<cols ; x++)
         {
             for(int y = 0; y<rows ; y++)
@@ -332,7 +368,8 @@ public class MazeSolver
                 System.out.printf("%s\t\t",cell[y][x].cost);
             }
             System.out.println();
-        }*/
+        }
+        */
 
     }
 }
