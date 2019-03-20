@@ -1,3 +1,5 @@
+import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -65,6 +67,54 @@ public class gitMazeSolver
     }
 
 
+    private static synchronized void Wait() {
+        try {
+            gitMazeSolver.class.wait(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void controlMouse(int dir)
+    {
+        int x, y;
+        try {
+            Robot robot = new Robot();
+
+            switch (dir)
+            {
+                case 0:
+                    x = 965;
+                    y = 450;
+                    break;
+                case 1:
+                    x = 1060;
+                    y = 545;
+                    break;
+                case 2:
+                    x = 965;
+                    y = 640;
+                    break;
+                case 3:
+                    x = 870;
+                    y = 545;
+                    break;
+                default:
+                    x = 965;
+                    y = 545;
+            }
+            robot.mouseMove(x, y);
+            robot.mousePress(InputEvent.BUTTON1_MASK);
+            robot.mouseRelease(InputEvent.BUTTON1_MASK);
+            Wait();
+
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private static int[] moveCell(Cell[][] c, boolean[] neighbors, int x, int y, int cols, int rows)
     {
         int[] newPosition = new int[2];
@@ -74,6 +124,7 @@ public class gitMazeSolver
             newPosition[0] = x;
             newPosition[1] = y-1;
             System.out.println("arriba");
+            controlMouse(0);
         }
 
         if((neighbors[1] == false) && (x != rows) && (c[x+1][y].cost < c[x][y].cost))
@@ -81,6 +132,7 @@ public class gitMazeSolver
             newPosition[0] = x+1;
             newPosition[1] = y;
             System.out.println("derecha");
+            controlMouse(1);
         }
 
         if((neighbors[2] == false) && (y != cols) && (c[x][y+1].cost < c[x][y].cost))
@@ -88,6 +140,7 @@ public class gitMazeSolver
             newPosition[0] = x;
             newPosition[1] = y+1;
             System.out.println("abajo");
+            controlMouse(2);
         }
 
         if((neighbors[3] == false) && (x != 0) && (c[x-1][y].cost < c[x][y].cost))
@@ -95,6 +148,7 @@ public class gitMazeSolver
             newPosition[0] = x-1;
             newPosition[1] = y;
             System.out.println("izquierda");
+            controlMouse(3);
         }
 
         return newPosition;
@@ -218,6 +272,8 @@ public class gitMazeSolver
          *       DEFINO OBJETOS
          ************************************/
         Cell[][] cell;
+
+
 
         /*************************************
          *       VARIABLES LOCALES

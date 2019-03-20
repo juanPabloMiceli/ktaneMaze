@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="gitMazeSolver:jar">
-    <output-path>$PROJECT_DIR$/../../../carpetita</output-path>
+    <output-path>$PROJECT_DIR$/../mazeSolverEjecutable</output-path>
     <root id="archive" name="gitMazeSolver.jar">
       <element id="module-output" name="gitMazeSolver" />
     </root>
