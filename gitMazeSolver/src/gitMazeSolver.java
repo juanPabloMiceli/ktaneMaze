@@ -119,7 +119,7 @@ public class gitMazeSolver
             robot.mouseMove(x, y);
             robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_MASK);
-            Wait(500);
+            Wait(25);
 
         } catch (AWTException e) {
             e.printStackTrace();
