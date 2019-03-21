@@ -6,6 +6,18 @@ import java.util.Scanner;
 
 public class gitMazeSolver
 {
+
+    private static int[] getScreenSize()
+    {
+        int[] screen = new int[2];
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        screen[0] = d.width;
+        screen[1] = d.height;
+
+        return screen;
+    }
+
     private static Cell[][] readObject(String s)
     {
         try
@@ -67,16 +79,16 @@ public class gitMazeSolver
     }
 
 
-    private static synchronized void Wait() {
+    private static synchronized void Wait(int timeout) {
         try {
-            gitMazeSolver.class.wait(50);
+            gitMazeSolver.class.wait(timeout);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
     }
 
-    private static void controlMouse(int dir)
+    private static void controlMouse(int dir, int[] screenSize)
     {
         int x, y;
         try {
@@ -85,29 +97,29 @@ public class gitMazeSolver
             switch (dir)
             {
                 case 0:
-                    x = 965;
-                    y = 450;
+                    x = (193*screenSize[0])/396;
+                    y = (5*screenSize[1])/12;
                     break;
                 case 1:
-                    x = 1060;
-                    y = 545;
+                    x = (53*screenSize[0])/96;
+                    y = (109*screenSize[1])/216;
                     break;
                 case 2:
-                    x = 965;
-                    y = 640;
+                    x = (193*screenSize[0])/384;
+                    y = (65*screenSize[1])/108;
                     break;
                 case 3:
-                    x = 870;
-                    y = 545;
+                    x = (29*screenSize[0])/64;
+                    y = (109*screenSize[1])/216;
                     break;
                 default:
-                    x = 965;
-                    y = 545;
+                    x = (193*screenSize[0])/384;
+                    y = (109*screenSize[1])/216;
             }
             robot.mouseMove(x, y);
             robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_MASK);
-            Wait();
+            Wait(500);
 
         } catch (AWTException e) {
             e.printStackTrace();
@@ -115,7 +127,7 @@ public class gitMazeSolver
 
     }
 
-    private static int[] moveCell(Cell[][] c, boolean[] neighbors, int x, int y, int cols, int rows)
+    private static int[] moveCell(Cell[][] c, boolean[] neighbors, int x, int y, int cols, int rows ,int[] screenSize)
     {
         int[] newPosition = new int[2];
 
@@ -124,7 +136,7 @@ public class gitMazeSolver
             newPosition[0] = x;
             newPosition[1] = y-1;
             System.out.println("arriba");
-            controlMouse(0);
+            controlMouse(0, screenSize);
         }
 
         if((neighbors[1] == false) && (x != rows) && (c[x+1][y].cost < c[x][y].cost))
@@ -132,7 +144,7 @@ public class gitMazeSolver
             newPosition[0] = x+1;
             newPosition[1] = y;
             System.out.println("derecha");
-            controlMouse(1);
+            controlMouse(1, screenSize);
         }
 
         if((neighbors[2] == false) && (y != cols) && (c[x][y+1].cost < c[x][y].cost))
@@ -140,7 +152,7 @@ public class gitMazeSolver
             newPosition[0] = x;
             newPosition[1] = y+1;
             System.out.println("abajo");
-            controlMouse(2);
+            controlMouse(2, screenSize);
         }
 
         if((neighbors[3] == false) && (x != 0) && (c[x-1][y].cost < c[x][y].cost))
@@ -148,7 +160,7 @@ public class gitMazeSolver
             newPosition[0] = x-1;
             newPosition[1] = y;
             System.out.println("izquierda");
-            controlMouse(3);
+            controlMouse(3, screenSize);
         }
 
         return newPosition;
@@ -304,7 +316,7 @@ public class gitMazeSolver
 
         int[] mazeData = {-1,-1,-1,-1,-1,-1};
         boolean[] neighbors = new boolean[4];
-
+        int[] screenSize;
 
         /*********************************************************************
          *  ASI CONSIGO EL PATH PARA EL ARCHIVO .JAR
@@ -353,6 +365,7 @@ public class gitMazeSolver
         int mazeNumber = -1;
         boolean whileFlag = false;
 
+        screenSize = getScreenSize();
 
         /***************************************************************************************************************************************************
          * mazeData ES UN ARRAY CON LO QUE SE PIDEN LOS DATOS DEL LABERINTO EN EL SIGUIENTE ORDEN: xCirculo, yCirculo, xSalida, ySalida, xLlegada, yLlegada
@@ -409,7 +422,7 @@ public class gitMazeSolver
         while(!Arrays.equals(Cell.currentPosition,Cell.finalPosition))
         {
             neighbors = checkNeighbors(cell, Cell.currentPosition[0], Cell.currentPosition[1]);
-            Cell.currentPosition = moveCell(cell,neighbors, Cell.currentPosition[0], Cell.currentPosition[1], cols, rows);
+            Cell.currentPosition = moveCell(cell,neighbors, Cell.currentPosition[0], Cell.currentPosition[1], cols, rows, screenSize);
         }
 
 

@@ -7,6 +7,17 @@ public class controlMouse
 {
 
 
+    private static int[] getScreenSize()
+    {
+        int[] screen = new int[2];
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        screen[0] = d.width;
+        screen[1] = d.height;
+
+        return screen;
+    }
+
     private static synchronized void Wait() {
         try {
             controlMouse.class.wait(1000);
@@ -19,6 +30,15 @@ public class controlMouse
 
     public static void main(String[] args)
     {
+        int x,y;
+        int[] screenSize;
+        screenSize = getScreenSize();
+        System.out.println(screenSize[0]);
+        System.out.println(screenSize[1]);
+
+        x = (53*screenSize[0]/96);
+        y = (109*screenSize[1]/216);
+        System.out.println("x: "+x+" y: "+y);
             try {
 
                 Robot robot = new Robot();
@@ -27,14 +47,15 @@ public class controlMouse
                 /************************************
                  *MOVER MOUSE
                  ***********************************/
-                robot.mouseMove(870, 545);
+                robot.mouseMove(x, y);
 
                 /************************************
                  *CLICK IZQUIERDO
                  ***********************************/
+                Wait();
                 robot.mousePress(InputEvent.BUTTON1_MASK);
                 robot.mouseRelease(InputEvent.BUTTON1_MASK);
-                Wait();
+
 
                 /************************************
                  *RUEDITA DEL MOUSE
