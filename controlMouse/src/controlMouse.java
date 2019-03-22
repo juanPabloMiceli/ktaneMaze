@@ -1,26 +1,15 @@
 import java.awt.*;
 import java.awt.event.InputEvent;
-
+import java.util.Scanner;
 
 
 public class controlMouse
 {
 
 
-    private static int[] getScreenSize()
-    {
-        int[] screen = new int[2];
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension d = tk.getScreenSize();
-        screen[0] = d.width;
-        screen[1] = d.height;
-
-        return screen;
-    }
-
     private static synchronized void Wait() {
         try {
-            controlMouse.class.wait(1000);
+            controlMouse.class.wait(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -30,15 +19,15 @@ public class controlMouse
 
     public static void main(String[] args)
     {
-        int x,y;
-        int[] screenSize;
-        screenSize = getScreenSize();
-        System.out.println(screenSize[0]);
-        System.out.println(screenSize[1]);
+        while(true) {
+            int x, y;
+            int[] screenSize;
+            Scanner input = new Scanner(System.in);
 
-        x = (53*screenSize[0]/96);
-        y = (109*screenSize[1]/216);
-        System.out.println("x: "+x+" y: "+y);
+            System.out.println("Ingrese x: ");
+            x = input.nextInt();
+            System.out.println("Ingrese y: ");
+            y = input.nextInt();
             try {
 
                 Robot robot = new Robot();
@@ -52,7 +41,7 @@ public class controlMouse
                 /************************************
                  *CLICK IZQUIERDO
                  ***********************************/
-                Wait();
+                //Wait();
                 robot.mousePress(InputEvent.BUTTON1_MASK);
                 robot.mouseRelease(InputEvent.BUTTON1_MASK);
 
@@ -60,17 +49,18 @@ public class controlMouse
                 /************************************
                  *RUEDITA DEL MOUSE
                  ***********************************/
-                robot.mousePress(InputEvent.BUTTON2_MASK);
-                robot.mouseRelease(InputEvent.BUTTON2_MASK);
+              /*  robot.mousePress(InputEvent.BUTTON2_MASK);
+                robot.mouseRelease(InputEvent.BUTTON2_MASK);*/
 
                 /************************************
                  *CLICK DERECHO
                  ***********************************/
-                robot.mousePress(InputEvent.BUTTON3_MASK);
-                robot.mouseRelease(InputEvent.BUTTON3_MASK);
+                /*robot.mousePress(InputEvent.BUTTON3_MASK);
+                robot.mouseRelease(InputEvent.BUTTON3_MASK);*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
     }
 
 }

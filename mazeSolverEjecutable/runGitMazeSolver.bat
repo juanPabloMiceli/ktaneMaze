@@ -1,0 +1,1 @@
+java -jar "C:\Users\juan pablo\Desktop\github\ktaneMaze\mazeSolverEjecutable\gitMazeSolver.jar"

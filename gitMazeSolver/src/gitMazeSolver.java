@@ -278,6 +278,13 @@ public class gitMazeSolver
 
     }
 
+    private static void printFinalMessage()
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Gran programa gran. Presiona cualquier tecla para cerrar esta ventana.");
+        input.next();
+    }
+
     public static void main(String[] args)
     {
         /*************************************
@@ -425,7 +432,7 @@ public class gitMazeSolver
             Cell.currentPosition = moveCell(cell,neighbors, Cell.currentPosition[0], Cell.currentPosition[1], cols, rows, screenSize);
         }
 
-
+        printFinalMessage();
         /********************
          * IMPRIMO LABERINTO
          *******************/
