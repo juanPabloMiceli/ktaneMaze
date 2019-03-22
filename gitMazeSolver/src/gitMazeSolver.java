@@ -168,56 +168,56 @@ public class gitMazeSolver
 
 
     private static int[] askForData(int cols, int rows, int[][] coordinates)
+{
+    int[] mazeData = {-1,-1,-1,-1,-1,-1,-1};
+    Scanner input = new Scanner(System.in);
+    boolean whileflag = false;
+
+    clearScreen();
+
+    while(!whileflag)
     {
-        int[] mazeData = {-1,-1,-1,-1,-1,-1,-1};
-        Scanner input = new Scanner(System.in);
-        boolean whileflag = false;
+        System.out.println("Ingrese la columna de cualquiera de los 2 puntos del laberinto: ");
+        mazeData[0] = input.nextInt()-1;
+        System.out.println("Ingrese la fila de cualquiera de los 2 puntos del laberinto: ");
+        mazeData[1] = input.nextInt()-1;
+        System.out.println("Ingrese columna de salida: ");
+        mazeData[2] = input.nextInt()-1;
+        System.out.println("Ingrese fila de salida: ");
+        mazeData[3] = input.nextInt()-1;
+        System.out.println("Ingrese columna de llegada: ");
+        mazeData[4] = input.nextInt()-1;
+        System.out.println("Ingrese fila de llegada: ");
+        mazeData[5] = input.nextInt()-1;
 
-        clearScreen();
+        mazeData[6] = chooseTheMaze(mazeData[0], mazeData[1], coordinates);
 
-        while(!whileflag)
+        if( (mazeData[0] > (cols - 1)) || (mazeData[1] > (rows-1)) || (mazeData[2] > (cols - 1)) || (mazeData[3] > (rows-1)) || (mazeData[4] > (cols - 1)) || (mazeData[5] > (rows - 1)) || (mazeData[0] < 0) || (mazeData[1] < 0) || (mazeData[2] < 0) || (mazeData[3] < 0) ||(mazeData[4] < 0) || (mazeData[5] < 0) )
         {
-            System.out.println("Ingrese la columna de cualquiera de los 2 puntos del laberinto: ");
-            mazeData[0] = input.nextInt()-1;
-            System.out.println("Ingrese la fila de cualquiera de los 2 puntos del laberinto: ");
-            mazeData[1] = input.nextInt()-1;
-            System.out.println("Ingrese columna de salida: ");
-            mazeData[2] = input.nextInt()-1;
-            System.out.println("Ingrese fila de salida: ");
-            mazeData[3] = input.nextInt()-1;
-            System.out.println("Ingrese columna de llegada: ");
-            mazeData[4] = input.nextInt()-1;
-            System.out.println("Ingrese fila de llegada: ");
-            mazeData[5] = input.nextInt()-1;
-
-            mazeData[6] = chooseTheMaze(mazeData[0], mazeData[1], coordinates);
-
-            if( (mazeData[0] > (cols - 1)) || (mazeData[1] > (rows-1)) || (mazeData[2] > (cols - 1)) || (mazeData[3] > (rows-1)) || (mazeData[4] > (cols - 1)) || (mazeData[5] > (rows - 1)) || (mazeData[0] < 0) || (mazeData[1] < 0) || (mazeData[2] < 0) || (mazeData[3] < 0) ||(mazeData[4] < 0) || (mazeData[5] < 0) )
+            clearScreen();
+            System.out.println("Algun dato fue mayor a 6 o menor a 1.");
+            System.out.println("Recuerde que las filas y columnas están numeradas del 1 al 6.");
+            System.out.println("Por favor, ingrese TODOS los datos nuevamente.\n");
+        }
+        else
+        {
+            if(mazeData[6] == -1)
             {
                 clearScreen();
-                System.out.println("Algun dato fue mayor a 6 o menor a 1.");
+                System.out.println("No se encontro ningun laberinto con un punto en esas coordenadas");
                 System.out.println("Recuerde que las filas y columnas están numeradas del 1 al 6.");
                 System.out.println("Por favor, ingrese TODOS los datos nuevamente.\n");
             }
             else
             {
-                if(mazeData[6] == -1)
-                {
-                    clearScreen();
-                    System.out.println("No se encontro ningun laberinto con un punto en esas coordenadas");
-                    System.out.println("Recuerde que las filas y columnas están numeradas del 1 al 6.");
-                    System.out.println("Por favor, ingrese TODOS los datos nuevamente.\n");
-                }
-                else
-                {
-                    whileflag = true;
-                }
-
+                whileflag = true;
             }
-        }
 
-        return mazeData;
+        }
     }
+
+    return mazeData;
+}
 
     private static void clearScreen(){
         //Clears Screen in java
