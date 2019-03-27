@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="controlMouse:jar">
+    <output-path>$PROJECT_DIR$/controlMouse_jar</output-path>
+    <root id="archive" name="controlMouse.jar">
+      <element id="module-output" name="controlMouse" />
+    </root>
+  </artifact>
+</component>

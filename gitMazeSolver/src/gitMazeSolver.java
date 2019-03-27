@@ -1,11 +1,21 @@
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class gitMazeSolver
 {
+    static int rightArrowX = 1080;
+    static int rightArrowY = 530;
+    static int leftArrowX = 850;
+    static int leftArrowY = 530;
+    static int topArrowX = 970;
+    static int topArrowY = 420;
+    static int bottomArrowX = 970;
+    static int bottomArrowY = 650;
 
     private static int[] getScreenSize()
     {
@@ -97,24 +107,24 @@ public class gitMazeSolver
             switch (dir)
             {
                 case 0:
-                    x = (193*screenSize[0])/396;
-                    y = (5*screenSize[1])/12;
+                    x = topArrowX;
+                    y = topArrowY;
                     break;
                 case 1:
-                    x = (53*screenSize[0])/96;
-                    y = (109*screenSize[1])/216;
+                    x = rightArrowX;
+                    y = rightArrowY;
                     break;
                 case 2:
-                    x = (193*screenSize[0])/384;
-                    y = (65*screenSize[1])/108;
+                    x = bottomArrowX;
+                    y = bottomArrowY;
                     break;
                 case 3:
-                    x = (29*screenSize[0])/64;
-                    y = (109*screenSize[1])/216;
+                    x = leftArrowX;
+                    y = leftArrowY;
                     break;
                 default:
-                    x = (193*screenSize[0])/384;
-                    y = (109*screenSize[1])/216;
+                    x = 0;
+                    y = 0;
             }
             robot.mouseMove(x, y);
             robot.mousePress(InputEvent.BUTTON1_MASK);
@@ -280,6 +290,17 @@ public class gitMazeSolver
 
     private static void printFinalMessage()
     {
+
+        try {
+            Robot key = new Robot();
+
+            key.keyPress(KeyEvent.VK_ALT);
+            key.keyPress(KeyEvent.VK_TAB);
+            key.keyRelease(KeyEvent.VK_TAB);
+            key.keyRelease(KeyEvent.VK_ALT);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         Scanner input = new Scanner(System.in);
         System.out.println("Gran programa gran. Presiona cualquier tecla para cerrar esta ventana.");
         input.next();
